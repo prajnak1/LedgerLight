@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Ledgerlight — statements, made clear</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><div class="brand-mark">L</div><span>ledgerlight</span></div>
+    <div class="workspace-label">WORKSPACE</div>
+    <nav><a class="nav-item active" href="#overview"><span>◫</span> Overview</a><a class="nav-item" href="#transactions"><span>⇄</span> Transactions <i id="review-badge">0</i></a><a class="nav-item" href="#statements"><span>▤</span> Statements</a></nav>
+    <div class="side-bottom"><div class="local-chip"><span class="dot"></span><div><b>Private by design</b><small>Files stay on this device</small></div></div><div class="profile"><div class="avatar">P</div><div><b>Prajna’s workspace</b><small>Personal account</small></div><span class="more">···</span></div></div>
+  </aside>
+  <main>
+    <header class="topbar"><div class="crumb">Workspace <span>/</span> <b>Overview</b></div><div class="top-right"><span class="local-label"><span class="dot"></span> Local workspace</span><button class="icon-btn" title="Help">?</button></div></header>
+    <div class="content">
+      <section class="intro"><div><div class="eyebrow">YOUR MONEY, IN FOCUS</div><h1>Good morning, Prajna <span class="wave">✳</span></h1><p>One clear view of your statements, spending, and what comes next.</p></div><button class="button primary" id="add-statement"><span>＋</span> Add statement</button><input id="file-input" type="file" accept=".pdf,.png,.jpg,.jpeg,.tif,.tiff" hidden></section>
+      <div class="notice" id="upload-notice" hidden></div>
+      <section class="metrics">
+        <article class="metric-card"><div class="metric-head"><span>Income tracked</span><span class="metric-icon mint">↗</span></div><div class="metric-value" id="income">$0.00</div><div class="metric-foot"><span class="muted">Across confirmed entries</span></div></article>
+        <article class="metric-card"><div class="metric-head"><span>Expenses tracked</span><span class="metric-icon peach">↘</span></div><div class="metric-value" id="expenses">$0.00</div><div class="metric-foot"><span class="muted">Across confirmed entries</span></div></article>
+        <article class="metric-card"><div class="metric-head"><span>Net cash flow</span><span class="metric-icon lilac">⌁</span></div><div class="metric-value" id="net">$0.00</div><div class="metric-foot"><span class="muted" id="confirmed-count">0 confirmed transactions</span></div></article>
+        <article class="metric-card forecast-card"><div class="metric-head"><span>Next month estimate</span><span class="metric-icon blue">↗</span></div><div class="metric-value" id="forecast">$0.00</div><div class="metric-foot"><span class="forecast-tag">FEATURE-BASED</span><span class="muted" id="forecast-period">Based on confirmed transactions</span></div></article>
+      </section>
+      <section class="middle-grid">
+        <article class="panel chart-panel"><div class="panel-head"><div><h2>Month over month</h2><p>Confirmed income, expenses, and net cash flow</p></div><div class="legend"><span><i class="legend-dot inc"></i> Income</span><span><i class="legend-dot exp"></i> Expenses</span></div></div><div id="chart" class="chart"></div><div id="comparison-empty" class="empty-chart" hidden>Confirm a few transactions to see your monthly comparison.</div></article>
+        <article class="panel forecast-panel"><div class="panel-head"><div><h2>Looking ahead</h2><p>Estimated from recurring patterns and spending categories</p></div><span class="sparkle">✳</span></div><div class="forecast-visual"><div class="forecast-number" id="forecast-large">$0<span> / month</span></div><span class="feature-stamp">ENGINEERED FEATURES</span></div><div id="forecast-breakdown" class="forecast-breakdown"></div><div class="forecast-caption">Recurring sources plus recency-weighted variable spending<span class="info" title="Uses up to three confirmed months">i</span></div><div class="forecast-note"><b>Interpretable baseline.</b> Repeated descriptions are treated as recurring; other cash flows use category totals weighted 50% recent, 30% previous, and 20% oldest.</div></article>
+      </section>
+      <section class="lower-grid">
+        <article class="panel transaction-panel" id="transactions"><div class="panel-head"><div><h2>Review transactions <span class="count-pill" id="review-count">0</span></h2><p>Check extracted details and confirm what looks right.</p></div><button class="text-button" id="show-all">View all <span>→</span></button></div><div id="transaction-list" class="transaction-list"></div><div id="transactions-empty" class="empty-state" hidden><div class="empty-icon">⇄</div><b>No transactions yet</b><span>Add a statement to extract and review your transactions.</span><button class="button secondary" id="empty-add">＋ Add a statement</button></div></article>
+        <article class="panel statements-panel" id="statements"><div class="panel-head"><div><h2>Your statements</h2><p>Uploaded files and their source pages.</p></div><button class="small-icon" id="small-add">＋</button></div><div id="statement-list" class="statement-list"></div><div id="statements-empty" class="empty-state compact" hidden><div class="empty-icon">▤</div><b>Your documents will show up here</b><span>PDF or image · processed locally</span></div><div class="privacy-footer"><span>◉</span><div><b>Your data stays yours</b><small>Statements are stored locally in this app.</small></div></div></article>
+      </section>
+      <footer>Ledgerlight <span>·</span> Local-first statement review <span class="footer-right">Figures link to the original statement page.</span></footer>
+    </div>
+  </main>
+  <div class="toast" id="toast"></div>
+  <script src="/app.js"></script>
+</body>
+</html>
